@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-primary);
+  --color-primary: var(--accent-violet);
+  --color-secondary: var(--accent-cyan);
+  --color-card: var(--bg-card);
+  --color-surface: var(--bg-surface);
+  --color-border: var(--border);
+  --color-textSecondary: var(--text-secondary);
+  --color-textMuted: var(--text-muted);
+}
+
+:root {
+  --bg-base: #030712;
+  --bg-surface: #0d1117;
+  --bg-card: #111827;
+  --accent-violet: #7c3aed;
+  --accent-violet-hover: #6d28d9;
+  --accent-cyan: #06b6d4;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+  --border: #1f2937;
+  --border-hover: #7c3aed;
+  --glow-violet: rgba(124,58,237,0.20);
+  --glow-cyan: rgba(6,182,212,0.12);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-secondary);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* ═══════════════════════════════════════
+   Subtle Dot Grid Background
+   ═══════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════
+   Scroll-triggered reveal animations
+   ═══════════════════════════════════════ */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Page-load animations (hero only) */
+.animate-fadeUp {
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fadeUpDelay {
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+.animate-fadeUpDelay2 {
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+/* Scroll-triggered reveal classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered delay helpers */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* ═══════════════════════════════════════
+   Hover Effects
+   ═══════════════════════════════════════ */
+.hover-glow-violet:hover {
+  box-shadow: 0 0 24px rgba(124,58,237,0.45);
+}
+
+.hover-glow-card {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-glow-card:hover {
+  box-shadow: 0 0 28px var(--glow-cyan), 0 8px 32px rgba(0,0,0,0.3);
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+/* ═══════════════════════════════════════
+   Section Dividers
+   ═══════════════════════════════════════ */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), rgba(124,58,237,0.3), var(--border), transparent);
+}
+
+/* ═══════════════════════════════════════
+   Scrollbar Styling
+   ═══════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-violet);
+}
+
+/* ═══════════════════════════════════════
+   Selection Styling
+   ═══════════════════════════════════════ */
+::selection {
+  background: rgba(124,58,237,0.3);
+  color: #f9fafb;
+}
