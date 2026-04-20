@@ -28,6 +28,8 @@ export default function Hero() {
             <a 
               href="/resume.pdf" 
               target="_blank"
+              rel="noopener noreferrer"
+              download="Harshad_Nikam_Resume.pdf"
               className="bg-transparent border border-[#374151] hover:border-primary hover:text-primary text-foreground text-[15px] font-[600] py-[12px] px-[28px] rounded-[8px] transition-colors"
             >
               View Resume

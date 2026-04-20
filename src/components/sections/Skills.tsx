@@ -2,14 +2,19 @@
 
 import React from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { title } from 'process';
 
 export default function Skills() {
   const ref = useScrollReveal();
 
   const customCategories = [
     {
+      title: "AI-ML",
+      skills: ["Python", "Scikit-Learn", "Data Visualization", "Pandas", "Numpy", "Model Evaluation", "Deployment"]
+    },
+    {
       title: "Languages",
-      skills: ["Python", "C", "C++", "Java", "JavaScript", "HTML/CSS", "SQL", "NoSQL", "Embedded C"]
+      skills: ["Python", "C", "C++", "Java", "JavaScript", "HTML/CSS", "SQL", "NoSQL", "Embedded C", "Python"]
     },
     {
       title: "Frontend",
@@ -29,7 +34,7 @@ export default function Skills() {
     },
     {
       title: "Currently Learning",
-      skills: ["Docker", "Kubernetes", "Infrastructure-as-Code", "DevOps"]
+      skills: ["Docker", "Infrastructure-as-Code"]
     }
   ];
 
